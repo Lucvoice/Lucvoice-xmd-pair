@@ -167,10 +167,9 @@ await delay(40000);
 ┃ 🔐 Code above is your Session ID
 ┃ 📋 Copy & save it safely
 ┃ 🚀 Use it to deploy your bot
-┃
 ┃ 📞 Help: 255768619068
 ┃ ⭐ Star & Fork Repo
-┃ 🔗 github.com/xhclintohn/Toxic-MD
+┃ 🔗 github.com/lucvoice/LUCVOICE-XMD
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 
 `;
