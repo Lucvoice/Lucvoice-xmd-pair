@@ -92,12 +92,11 @@ async function startPairing() {
                     await sock.sendMessage(sock.user.id, {  
                         text: `
 
-╭━━━〔 💜LUCVOICE-XMD💚 〕━━━╮
-┃ 👋 Connected Successfully
-┃ 🔐 Generating Session ID...
-┃ 📩 Sending Soon 🙂
-╰━━━━━━━━━━━━━━━━━━━━━━╯
+◈━━━━━━━━━━━◈
+│❒ Hello! 👋 You're now connected to Toxic-MD.
 
+│❒ Please wait a moment while we generate your session ID. It will be sent shortly... 🙂
+◈━━━━━━━━━━━◈
 `,
 });
 } catch (msgError) {
@@ -163,16 +162,32 @@ await delay(40000);
 
                     const infoMessage = `
 
-╭━━━〔 💜 SESSION CONNECTED 💚 〕━━━╮
-┃ 🔐 Code above is your Session ID
-┃ 📋 Copy & save it safely
-┃ 🚀 Use it to deploy your bot
-┃ 📞 Help: 255768619068
-┃ ⭐ Star & Fork Repo
-┃ 🔗 github.com/lucvoice/LUCVOICE-XMD
-╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+◈━━━━━━━━━━━◈
+SESSION CONNECTED
 
-`;
+│❒ The long code above is your Session ID. Please copy and store it safely, as you'll need it to deploy your Toxic-MD bot! 🔐
+
+│❒ Need help? Reach out to us:
+
+『••• Visit For Help •••』
+
+> Owner:
+https://wa.me/254114885159
+
+> WaGroup:
+https://chat.whatsapp.com/GDcJihbSIYM0GzQJWKA6gS?mode=gi_t
+
+> WaChannel:
+https://whatsapp.com/channel/0029VbCKkVc7z4kh02WGqF0m
+
+> Instagram:
+https://www.instagram.com/xh_clinton
+
+> BotRepo:
+https://github.com/xhclintohn/Toxic-MD
+
+│❒ Don't forget to give a ⭐ to our repo and fork it to stay updated! :)
+◈━━━━━━━━━━━◈`;
 
 console.log('📤 Sending information message...');  
                     await sock.sendMessage(sock.user.id, { text: infoMessage }, { quoted: sentSession });  

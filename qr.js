@@ -125,15 +125,10 @@ const { makeid } = require('./id');
 
                           try {
                               await sock.sendMessage(sock.user.id, {
-                                  text: `
-
-╭━━━〔 💜 LUCVOICE-XMD 💚 〕━━━╮
-┃ 👋 Connected Successfully
-┃ 🔐 Generating Session ID...
-┃ 📩 Sending Soon 🙂
-╰━━━━━━━━━━━━━━━━━━━━╯
-
-`,
+                                  text: `◈━━━━━━━━━━━◈
+  │❒ Hello! 👋 You're now connected to Toxic-MD.
+  │❒ Please wait a moment while we generate your session ID. It will be sent shortly... 🙂
+  ◈━━━━━━━━━━━◈`
                               });
                           } catch {}
 
@@ -159,18 +154,31 @@ const { makeid } = require('./id');
                               await sock.sendMessage(
                                   sock.user.id,
                                   {
-                                      text = `
+                                      text: `◈━━━━━━━━━━━◈
+  SESSION CONNECTED
 
-╭━━━〔 💜 SESSION CONNECTED 💚 〕━━━╮
-┃ 🔐 Session ID ready
-┃ 📋 Copy & save safely
-┃ 🚀 Deploy your bot now
-┃ 📞 Help: 255768619068
-┃ ⭐ Star & Fork Repo
-┃ 🔗 github.com/lucvoice/LUCVOICE-XMD
-╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+  │❒ The long code above is your Session ID. Please copy and store it safely, as you'll need it to deploy your Toxic-MD bot! 🔐
 
-`;
+  │❒ Need help? Reach out to us:
+
+  『••• Visit For Help •••』
+  > Owner/Developer:
+  _https:
+
+  > WaGroup:
+  _https:
+
+  > WaChannel:
+  _https:
+
+  > Instagram:
+  https:
+
+  > Bot Repo:
+  _https:
+
+  │❒ Don't forget to give a ⭐ to our repo and fork it to stay updated! :)
+  ◈━━━━━━━━━━━◈`
                                   },
                                   { quoted: session }
                               );
