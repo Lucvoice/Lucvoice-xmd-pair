@@ -90,7 +90,7 @@ async function startPairing() {
 
                 try {  
                     await sock.sendMessage(sock.user.id, {  
-                     text` 
+                     text:` 
                         ╭────〔 🤖 LUCVOICE-XMD 〕────╮
 ╰──────────────────────╯
 
