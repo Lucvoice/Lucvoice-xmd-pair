@@ -96,7 +96,7 @@ async function startPairing() {
 
 👋 Connected
 ⏳ Creating ID...
-📩 Please wait 🙂
+📩 Please wait 💙
   `,                  
 });
 } catch (msgError) {
