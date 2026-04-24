@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUCVOICE-XMD | Pairing UI</title>
+<title>LUCVOICE-XMD | Premium UI</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 :root{
 --primary:#00ffe0;
 --secondary:#0088ff;
---pink:#ff00ff;
---glass:rgba(255,255,255,0.07);
+--glass:rgba(255,255,255,0.08);
+--border:rgba(255,255,255,0.12);
+--text:#ffffff;
 --muted:rgba(255,255,255,0.65);
 }
 
@@ -28,155 +29,186 @@ display:flex;
 justify-content:center;
 align-items:center;
 padding:20px;
-background:linear-gradient(135deg,#020617,#0f172a,#111827);
 overflow:hidden;
+background:
+radial-gradient(circle at top left,#00ffc355,transparent 35%),
+radial-gradient(circle at bottom right,#0066ff55,transparent 35%),
+linear-gradient(135deg,#020617,#0f172a,#111827);
 }
 
-/* glow background */
-body::before{
-content:"";
-position:absolute;
-width:350px;
-height:350px;
-background:radial-gradient(circle,#00ffe055,transparent 70%);
-top:-80px;
-left:-80px;
-filter:blur(60px);
-}
-
+/* animated floating glow */
+body::before,
 body::after{
 content:"";
 position:absolute;
-width:350px;
-height:350px;
-background:radial-gradient(circle,#ff00ff44,transparent 70%);
+width:300px;
+height:300px;
+border-radius:50%;
+filter:blur(80px);
+z-index:0;
+animation:float 8s ease-in-out infinite;
+}
+
+body::before{
+background:#00ffe055;
+top:-80px;
+left:-80px;
+}
+
+body::after{
+background:#0088ff55;
 bottom:-80px;
 right:-80px;
-filter:blur(60px);
+animation-delay:4s;
 }
 
-/* CARD */
+@keyframes float{
+0%,100%{transform:translateY(0px);}
+50%{transform:translateY(30px);}
+}
+
 .card{
-width:100%;
-max-width:420px;
-padding:35px 25px;
-border-radius:28px;
-background:var(--glass);
-backdrop-filter:blur(25px);
-border:1px solid rgba(255,255,255,0.12);
 position:relative;
+z-index:2;
+width:100%;
+max-width:430px;
+padding:35px 28px;
+border-radius:30px;
+background:var(--glass);
+backdrop-filter:blur(22px) saturate(180%);
+-webkit-backdrop-filter:blur(22px) saturate(180%);
+border:1px solid var(--border);
+box-shadow:
+0 20px 60px rgba(0,0,0,0.45),
+inset 0 1px 1px rgba(255,255,255,0.18);
 overflow:hidden;
-text-align:center;
-color:#fff;
 }
 
-/* EDGE LIGHT */
 .card::before{
 content:"";
 position:absolute;
-inset:-2px;
-border-radius:30px;
-padding:2px;
-background:linear-gradient(45deg,#00ffe0,#0088ff,#ff00ff,#00ffe0);
-background-size:300% 300%;
-animation:move 6s linear infinite;
-z-index:-1;
-
--webkit-mask:
-linear-gradient(#fff 0 0) content-box,
-linear-gradient(#fff 0 0);
--webkit-mask-composite:xor;
-mask-composite:exclude;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.08),
+transparent
+);
+transform:rotate(25deg);
+animation:shine 6s linear infinite;
 }
 
-@keyframes move{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+@keyframes shine{
+0%{transform:translateX(-100%) rotate(25deg);}
+100%{transform:translateX(100%) rotate(25deg);}
 }
 
-/* ICON */
-.icon{
-width:85px;
-height:85px;
+.logo{
+width:90px;
+height:90px;
 margin:auto;
-border-radius:22px;
+border-radius:24px;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:32px;
+font-size:34px;
+color:#fff;
 background:linear-gradient(135deg,var(--primary),var(--secondary));
-box-shadow:0 0 25px #00ffee55;
-margin-bottom:15px;
+box-shadow:0 0 25px #00ffee66;
+margin-bottom:18px;
 }
 
-/* TITLE */
 h1{
-font-size:26px;
-margin-bottom:6px;
+text-align:center;
+font-size:30px;
+font-weight:900;
+color:var(--text);
+letter-spacing:1px;
 }
 
-/* SUB */
 .sub{
+text-align:center;
 font-size:13px;
 color:var(--muted);
+margin-top:6px;
+margin-bottom:30px;
 letter-spacing:2px;
 text-transform:uppercase;
-margin-bottom:25px;
 }
 
-/* CODE BOX (PAIRED CODE COLOR) */
-.code-box{
-margin:15px auto 25px;
-padding:18px;
-border-radius:16px;
-background:linear-gradient(135deg,#00ffe0,#0088ff,#ff00ff);
-background-size:300% 300%;
-animation:gradientMove 5s ease infinite;
-color:#000;
-font-weight:900;
-font-size:20px;
-letter-spacing:3px;
-box-shadow:0 0 25px rgba(0,255,255,0.35);
+.label{
+text-align:center;
+font-size:12px;
+color:var(--muted);
+margin-bottom:16px;
+letter-spacing:1px;
 }
 
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+.buttons{
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-/* BUTTONS */
 .btn{
-width:100%;
-height:55px;
-margin-top:10px;
+height:60px;
 border:none;
-border-radius:14px;
+border-radius:18px;
 font-size:15px;
 font-weight:800;
 cursor:pointer;
 color:#fff;
-background:rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.12);
-transition:.25s;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+transition:.25s ease;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.10);
+backdrop-filter:blur(12px);
 }
 
 .btn:hover{
-transform:translateY(-3px);
+transform:translateY(-4px) scale(1.02);
 background:rgba(255,255,255,0.12);
 }
 
 .btn.primary{
-background:linear-gradient(135deg,#00ffe0,#0088ff);
-box-shadow:0 0 18px rgba(0,255,255,0.35);
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+box-shadow:0 0 20px rgba(0,255,255,0.35);
 }
 
-/* FOOTER */
+.status{
+margin-top:18px;
+padding:14px;
+border-radius:16px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+font-size:13px;
+color:var(--muted);
+text-align:center;
+line-height:1.6;
+}
+
 .footer{
-margin-top:20px;
+margin-top:22px;
+text-align:center;
 font-size:12px;
 color:var(--muted);
+line-height:1.7;
+}
+
+.footer a{
+color:#00ffee;
+text-decoration:none;
+font-weight:700;
+}
+
+.footer a:hover{
+text-decoration:underline;
 }
 </style>
 </head>
@@ -185,27 +217,35 @@ color:var(--muted);
 
 <div class="card">
 
-<div class="icon">
-<i class="fas fa-link"></i>
+<div class="logo">
+<i class="fas fa-robot"></i>
 </div>
 
-<h1>PAIRING CODE</h1>
-<div class="sub">LUCVOICE-XMD Connection</div>
+<h1>LUCVOICE-XMD</h1>
+<div class="sub">Premium Connection UI</div>
 
-<div class="code-box">
-XMD-9K2P-7LQ8
+<div class="label">Select Login Method</div>
+
+<div class="buttons">
+
+<button class="btn primary" onclick="window.location.href='/qr'">
+<i class="fas fa-qrcode"></i> Connect with QR
+</button>
+
+<button class="btn" onclick="window.location.href='/pair'">
+<i class="fas fa-mobile-alt"></i> Use Pairing Code
+</button>
+
 </div>
 
-<button class="btn primary">
-<i class="fas fa-copy"></i> Copy Code
-</button>
-
-<button class="btn">
-<i class="fas fa-sync"></i> Generate New Code
-</button>
+<div class="status">
+⚡ Fast Secure Session<br>
+🔒 End-to-End Protected
+</div>
 
 <div class="footer">
-Secure pairing system • LUCVOICE-XMD
+Powered by <a href="#">LUCVOICE-XMD</a><br>
+Support: <a href="https://wa.me/255768619068">WhatsApp</a>
 </div>
 
 </div>
