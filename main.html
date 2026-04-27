@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUCVOICE-XMD | XOS UI</title>
+<title>LUCVOICE-XMD | XOS Mini</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 :root{
---primary:#00ffe0;
---secondary:#0088ff;
---glass:rgba(255,255,255,0.06);
---border:rgba(255,255,255,0.10);
+--red:#ff003c;
+--glass:rgba(255,255,255,.06);
+--border:rgba(255,255,255,.08);
 --text:#fff;
---muted:rgba(255,255,255,0.65);
+--muted:rgba(255,255,255,.65);
 }
 
 *{
@@ -30,102 +29,83 @@ display:flex;
 justify-content:center;
 align-items:center;
 padding:18px;
-overflow:hidden;
 background:
-radial-gradient(circle at top left,#00ffc333,transparent 40%),
-radial-gradient(circle at bottom right,#0088ff33,transparent 40%),
-linear-gradient(135deg,#020617,#0b1220,#000);
+radial-gradient(circle at top left,#ff003c44,transparent 30%),
+radial-gradient(circle at bottom right,#ff003c22,transparent 35%),
+linear-gradient(135deg,#000,#090909,#140000);
+overflow:hidden;
 }
 
-/* floating glow */
-body::before,
-body::after{
-content:"";
-position:absolute;
-width:280px;
-height:280px;
-border-radius:50%;
-filter:blur(90px);
-z-index:0;
-animation:float 8s ease-in-out infinite;
-}
-
-body::before{
-background:#00ffe033;
-top:-70px;
-left:-70px;
-}
-
-body::after{
-background:#0088ff33;
-bottom:-70px;
-right:-70px;
-animation-delay:4s;
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(25px);}
-}
-
-/* PHONE / XOS SCREEN */
 .phone{
 width:100%;
-max-width:360px;
+max-width:340px;
 height:680px;
+background:#050505;
+border-radius:34px;
 padding:18px;
-border-radius:28px;
-background:rgba(255,255,255,0.04);
-backdrop-filter:blur(20px);
-border:1px solid var(--border);
-box-shadow:0 0 40px rgba(0,255,224,0.15);
+position:relative;
+overflow:hidden;
+box-shadow:0 0 35px rgba(255,0,60,.25);
+}
+
+.phone::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at top left,#ff003c22,transparent 35%),
+radial-gradient(circle at bottom right,#ff003c18,transparent 45%);
+z-index:0;
+}
+
+/* SMALL TOP STATUS TABLE */
+.topbar{
 position:relative;
 z-index:2;
-overflow:hidden;
-}
-
-/* topbar */
-.topbar{
 display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:11px;
-color:var(--muted);
-margin-bottom:18px;
+justify-content:center;
+margin-bottom:14px;
 }
 
-.dot{
-width:7px;
-height:7px;
-border-radius:50%;
-background:var(--primary);
-box-shadow:0 0 10px var(--primary);
+.status-box{
+display:flex;
+gap:8px;
+padding:4px 10px;
+border-radius:12px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+font-size:10px;
+color:#fff;
 }
 
-/* logo */
+/* LOGO */
 .logo{
-text-align:center;
-margin-top:10px;
-margin-bottom:25px;
+position:relative;
+z-index:2;
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-top:8px;
+margin-bottom:28px;
 }
 
 .logo-box{
-width:72px;
-height:72px;
-margin:auto;
-border-radius:20px;
+width:78px;
+height:78px;
+border-radius:24px;
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:30px;
 color:#fff;
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-box-shadow:0 0 25px rgba(0,255,224,0.35);
+background:linear-gradient(135deg,#ff003c,#7a001f);
+box-shadow:0 0 20px rgba(255,0,60,.45);
+margin-bottom:12px;
 }
 
 .logo h1{
-margin-top:10px;
-font-size:20px;
+font-size:22px;
 color:#fff;
 font-weight:900;
 }
@@ -136,17 +116,19 @@ color:var(--muted);
 margin-top:4px;
 }
 
-/* apps grid */
+/* APPS */
 .apps{
+position:relative;
+z-index:2;
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:14px;
-margin-top:20px;
+gap:16px;
+margin-top:15px;
 }
 
 .app{
-height:160px;
-border-radius:22px;
+height:180px;
+border-radius:28px;
 background:var(--glass);
 border:1px solid var(--border);
 backdrop-filter:blur(16px);
@@ -155,63 +137,69 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 cursor:pointer;
-transition:.25s;
+transition:.3s;
 }
 
 .app:hover{
-transform:translateY(-5px);
-box-shadow:0 0 25px rgba(0,255,224,0.25);
+transform:translateY(-5px) scale(1.02);
+box-shadow:0 0 24px rgba(255,0,60,.45);
 }
 
 .icon{
-width:65px;
-height:65px;
-border-radius:18px;
+width:82px;
+height:82px;
+border-radius:24px;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:26px;
-color:var(--primary);
-background:rgba(0,0,0,0.3);
-box-shadow:inset 0 0 10px rgba(255,255,255,0.05);
-margin-bottom:10px;
+font-size:34px;
+background:linear-gradient(145deg,#181818,#000);
+color:var(--red);
+margin-bottom:14px;
 }
 
 .app h3{
+font-size:18px;
 color:#fff;
-font-size:14px;
 }
 
 .app p{
-font-size:11px;
+font-size:12px;
 color:var(--muted);
-margin-top:3px;
+margin-top:5px;
 }
 
-/* footer */
+/* FOOTER */
 .footer{
 position:absolute;
-bottom:16px;
 left:18px;
 right:18px;
-text-align:center;
-font-size:11px;
-color:var(--muted);
+bottom:18px;
+height:62px;
+border-radius:22px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(15px);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:12px;
+color:#fff;
+z-index:2;
 }
 
-/* home bar */
-.home{
+/* HOME LINE */
+.line{
 position:absolute;
-bottom:6px;
+bottom:5px;
 left:50%;
 transform:translateX(-50%);
 width:80px;
 height:4px;
 border-radius:10px;
 background:#fff;
-opacity:.5;
+opacity:.6;
+z-index:3;
 }
-
 </style>
 </head>
 
@@ -219,10 +207,13 @@ opacity:.5;
 
 <div class="phone">
 
+<!-- SMALL STATUS TABLE -->
 <div class="topbar">
-<div class="dot"></div>
-<span>XOS UI</span>
-<span>●</span>
+<div class="status-box">
+<span>● XOS</span>
+<span>● LIVE</span>
+<span>● OK</span>
+</div>
 </div>
 
 <div class="logo">
@@ -230,42 +221,30 @@ opacity:.5;
 <i class="fas fa-robot"></i>
 </div>
 <h1>LUCVOICE-XMD</h1>
-<p>System Launcher Interface</p>
+<p>Premium Connection UI</p>
 </div>
 
 <div class="apps">
 
 <div class="app" onclick="window.location.href='/qr'">
 <div class="icon"><i class="fas fa-qrcode"></i></div>
-<h3>QR Scan</h3>
-<p>Connect device</p>
+<h3>QR Code</h3>
+<p>Scan & Connect</p>
 </div>
 
 <div class="app" onclick="window.location.href='/pair'">
 <div class="icon"><i class="fas fa-link"></i></div>
 <h3>Pairing</h3>
-<p>Login fast</p>
-</div>
-
-<div class="app">
-<div class="icon"><i class="fas fa-bolt"></i></div>
-<h3>Speed</h3>
-<p>Optimized</p>
-</div>
-
-<div class="app">
-<div class="icon"><i class="fas fa-cog"></i></div>
-<h3>Settings</h3>
-<p>System config</p>
+<p>Fast Login</p>
 </div>
 
 </div>
 
 <div class="footer">
-LUCVOICE-XMD © 2026 • XOS SYSTEM
+LUCVOICE-XMD © 2026
 </div>
 
-<div class="home"></div>
+<div class="line"></div>
 
 </div>
 
