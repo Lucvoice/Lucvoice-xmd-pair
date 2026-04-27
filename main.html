@@ -3,206 +3,193 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUCVOICE-XMD | Premium UI</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>LUCVOICE-XMD PAIRING</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
---primary:#00ffe0;
---secondary:#0088ff;
---glass:rgba(255,255,255,0.08);
---border:rgba(255,255,255,0.12);
---text:#ffffff;
---muted:rgba(255,255,255,0.65);
-}
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-min-height:100vh;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
+background:#050505;
 overflow:hidden;
-background:
-radial-gradient(circle at top left,#00ffc355,transparent 35%),
-radial-gradient(circle at bottom right,#0066ff55,transparent 35%),
-linear-gradient(135deg,#020617,#0f172a,#111827);
 }
 
-body::before,
-body::after{
-content:"";
+.phone{
+width:360px;
+height:730px;
+border-radius:35px;
+padding:18px;
+background:#000;
+position:relative;
+overflow:hidden;
+box-shadow:
+0 0 0 2px #222,
+0 0 40px rgba(255,0,0,.25);
+}
+
+.phone::before{
+content:'';
 position:absolute;
-width:300px;
-height:300px;
-border-radius:50%;
-filter:blur(80px);
+inset:0;
+background:
+radial-gradient(circle at top left,#ff003c55,transparent 35%),
+radial-gradient(circle at bottom right,#ff003c33,transparent 45%);
 z-index:0;
-animation:float 8s ease-in-out infinite;
 }
 
-body::before{
-background:#00ffe055;
-top:-80px;
-left:-80px;
-}
-
-body::after{
-background:#0088ff55;
-bottom:-80px;
-right:-80px;
-animation-delay:4s;
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0px);}
-50%{transform:translateY(30px);}
-}
-
-.card{
+.top{
 position:relative;
 z-index:2;
-width:100%;
-max-width:430px;
-padding:35px 28px;
-border-radius:30px;
-background:var(--glass);
-backdrop-filter:blur(22px) saturate(180%);
--webkit-backdrop-filter:blur(22px) saturate(180%);
-border:1px solid var(--border);
-box-shadow:
-0 20px 60px rgba(0,0,0,0.45),
-inset 0 1px 1px rgba(255,255,255,0.18);
-overflow:hidden;
-}
-
-.logo{
-width:90px;
-height:90px;
-margin:auto;
-border-radius:24px;
 display:flex;
-justify-content:center;
-align-items:center;
-font-size:34px;
+justify-content:space-between;
 color:#fff;
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-box-shadow:0 0 25px #00ffee66;
+font-size:13px;
 margin-bottom:18px;
 }
 
-h1{
-text-align:center;
-font-size:30px;
-font-weight:900;
-color:var(--text);
-letter-spacing:1px;
+.search{
+position:relative;
+z-index:2;
+height:50px;
+border-radius:30px;
+background:#fff;
+display:flex;
+align-items:center;
+padding:0 18px;
+font-size:14px;
+color:#666;
+margin-bottom:18px;
+}
+
+.apps{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+margin-top:25px;
+}
+
+.appbox{
+height:180px;
+border-radius:28px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.08);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:#fff;
+box-shadow:0 0 25px rgba(255,0,0,.12);
+transition:.3s;
+}
+
+.appbox:hover{
+transform:translateY(-5px) scale(1.02);
+box-shadow:0 0 25px rgba(255,0,0,.4);
+}
+
+.icon{
+width:90px;
+height:90px;
+border-radius:25px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:42px;
+margin-bottom:15px;
+background:linear-gradient(145deg,#1b1b1b,#000);
+box-shadow:
+0 0 20px rgba(255,0,0,.35),
+inset 0 0 10px rgba(255,255,255,.05);
+color:#ff003c;
+}
+
+.title{
+font-size:18px;
+font-weight:600;
 }
 
 .sub{
-text-align:center;
-font-size:13px;
-color:var(--muted);
-margin-top:6px;
-margin-bottom:30px;
-letter-spacing:2px;
-text-transform:uppercase;
-}
-
-.label{
-text-align:center;
 font-size:12px;
-color:var(--muted);
-margin-bottom:16px;
-letter-spacing:1px;
-}
-
-.buttons{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-.btn{
-height:60px;
-border:none;
-border-radius:18px;
-font-size:15px;
-font-weight:800;
-cursor:pointer;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-transition:.25s ease;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.10);
-backdrop-filter:blur(12px);
-}
-
-.btn:hover{
-transform:translateY(-4px) scale(1.02);
-background:rgba(255,255,255,0.12);
-}
-
-.btn.primary{
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-box-shadow:0 0 20px rgba(0,255,255,0.35);
+opacity:.7;
+margin-top:4px;
 }
 
 .footer{
-margin-top:22px;
-text-align:center;
-font-size:12px;
-color:var(--muted);
-line-height:1.7;
+position:absolute;
+bottom:18px;
+left:18px;
+right:18px;
+height:68px;
+border-radius:22px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(14px);
+display:flex;
+justify-content:center;
+align-items:center;
+color:#fff;
+z-index:2;
+font-size:14px;
 }
 
-.footer a{
-color:#00ffee;
-text-decoration:none;
-font-weight:700;
+.line{
+position:absolute;
+bottom:5px;
+left:50%;
+transform:translateX(-50%);
+width:120px;
+height:5px;
+border-radius:10px;
+background:#fff;
+opacity:.7;
+z-index:3;
 }
 </style>
 </head>
-
 <body>
 
-<div class="card">
+<div class="phone">
 
-<div class="logo">
-<i class="fas fa-robot"></i>
+<div class="top">
+<span>00:06</span>
+<span>📶 🔋52%</span>
 </div>
 
-<h1>LUCVOICE-XMD</h1>
-<div class="sub">Premium Connection UI</div>
+<div class="search">🔍 Search Pairing...</div>
 
-<div class="label">Select Login Method</div>
+<div class="apps">
 
-<div class="buttons">
+<div class="appbox">
+<div class="icon">🔗</div>
+<div class="title">Pairing Code</div>
+<div class="sub">Fast Connect Device</div>
+</div>
 
-<button class="btn primary" onclick="window.location.href='/qr'">
-<i class="fas fa-qrcode"></i> Connect with QR
-</button>
-
-<button class="btn" onclick="window.location.href='/pair'">
-<i class="fas fa-mobile-alt"></i> Use Pairing Code
-</button>
+<div class="appbox">
+<div class="icon">📷</div>
+<div class="title">QR Code</div>
+<div class="sub">Scan & Login</div>
+</div>
 
 </div>
 
 <div class="footer">
-Powered by <a href="#">LUCVOICE-XMD</a><br>
-Support: @2026
+LUCVOICE-XMD © 2026
 </div>
+
+<div class="line"></div>
 
 </div>
 
