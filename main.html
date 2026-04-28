@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUCVOICE-XMD | XOS Mini</title>
-
+<title>LUCVOICE-XMD | Premium UI</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 :root{
---red:#ff003c;
---glass:rgba(255,255,255,.06);
---border:rgba(255,255,255,.08);
---text:#fff;
---muted:rgba(255,255,255,.65);
+--primary:#00ffe0;
+--secondary:#0088ff;
+--glass:rgba(255,255,255,0.08);
+--border:rgba(255,255,255,0.12);
+--text:#ffffff;
+--muted:rgba(255,255,255,0.65);
 }
 
 *{
@@ -28,223 +28,181 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:18px;
+padding:20px;
+overflow:hidden;
 background:
-radial-gradient(circle at top left,#ff003c44,transparent 30%),
-radial-gradient(circle at bottom right,#ff003c22,transparent 35%),
-linear-gradient(135deg,#000,#090909,#140000);
-overflow:hidden;
+radial-gradient(circle at top left,#00ffc355,transparent 35%),
+radial-gradient(circle at bottom right,#0066ff55,transparent 35%),
+linear-gradient(135deg,#020617,#0f172a,#111827);
 }
 
-.phone{
-width:100%;
-max-width:340px;
-height:680px;
-background:#050505;
-border-radius:34px;
-padding:18px;
-position:relative;
-overflow:hidden;
-box-shadow:0 0 35px rgba(255,0,60,.25);
-}
-
-.phone::before{
+body::before,
+body::after{
 content:"";
 position:absolute;
-inset:0;
-background:
-radial-gradient(circle at top left,#ff003c22,transparent 35%),
-radial-gradient(circle at bottom right,#ff003c18,transparent 45%);
+width:300px;
+height:300px;
+border-radius:50%;
+filter:blur(80px);
 z-index:0;
+animation:float 8s ease-in-out infinite;
 }
 
-/* SMALL TOP STATUS TABLE */
-.topbar{
+body::before{
+background:#00ffe055;
+top:-80px;
+left:-80px;
+}
+
+body::after{
+background:#0088ff55;
+bottom:-80px;
+right:-80px;
+animation-delay:4s;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0px);}
+50%{transform:translateY(30px);}
+}
+
+.card{
 position:relative;
 z-index:2;
-display:flex;
-justify-content:center;
-margin-bottom:14px;
-}
-
-.status-box{
-display:flex;
-gap:8px;
-padding:4px 10px;
-border-radius:12px;
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(10px);
-font-size:10px;
-color:#fff;
-}
-
-/* LOGO */
-.logo{
-position:relative;
-z-index:2;
-display:flex;
-flex-direction:column;
-align-items:center;
-margin-top:8px;
-margin-bottom:28px;
-}
-
-.logo-box{
-width:78px;
-height:78px;
-border-radius:24px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-color:#fff;
-background:linear-gradient(135deg,#ff003c,#7a001f);
-box-shadow:0 0 20px rgba(255,0,60,.45);
-margin-bottom:12px;
-}
-
-.logo h1{
-font-size:22px;
-color:#fff;
-font-weight:900;
-}
-
-.logo p{
-font-size:11px;
-color:var(--muted);
-margin-top:4px;
-}
-
-/* APPS */
-.apps{
-position:relative;
-z-index:2;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:16px;
-margin-top:15px;
-}
-
-.app{
-height:180px;
-border-radius:28px;
+width:100%;
+max-width:430px;
+padding:35px 28px;
+border-radius:30px;
 background:var(--glass);
+backdrop-filter:blur(22px) saturate(180%);
+-webkit-backdrop-filter:blur(22px) saturate(180%);
 border:1px solid var(--border);
-backdrop-filter:blur(16px);
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-cursor:pointer;
-transition:.3s;
+box-shadow:
+0 20px 60px rgba(0,0,0,0.45),
+inset 0 1px 1px rgba(255,255,255,0.18);
+overflow:hidden;
 }
 
-.app:hover{
-transform:translateY(-5px) scale(1.02);
-box-shadow:0 0 24px rgba(255,0,60,.45);
-}
-
-.icon{
-width:82px;
-height:82px;
+.logo{
+width:90px;
+height:90px;
+margin:auto;
 border-radius:24px;
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:34px;
-background:linear-gradient(145deg,#181818,#000);
-color:var(--red);
-margin-bottom:14px;
-}
-
-.app h3{
-font-size:18px;
 color:#fff;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+box-shadow:0 0 25px #00ffee66;
+margin-bottom:18px;
 }
 
-.app p{
+h1{
+text-align:center;
+font-size:30px;
+font-weight:900;
+color:var(--text);
+letter-spacing:1px;
+}
+
+.sub{
+text-align:center;
+font-size:13px;
+color:var(--muted);
+margin-top:6px;
+margin-bottom:30px;
+letter-spacing:2px;
+text-transform:uppercase;
+}
+
+.label{
+text-align:center;
 font-size:12px;
 color:var(--muted);
-margin-top:5px;
+margin-bottom:16px;
+letter-spacing:1px;
 }
 
-/* FOOTER */
-.footer{
-position:absolute;
-left:18px;
-right:18px;
-bottom:18px;
-height:62px;
-border-radius:22px;
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(15px);
+.buttons{
 display:flex;
-justify-content:center;
-align-items:center;
-font-size:12px;
-color:#fff;
-z-index:2;
+flex-direction:column;
+gap:15px;
 }
 
-/* HOME LINE */
-.line{
-position:absolute;
-bottom:5px;
-left:50%;
-transform:translateX(-50%);
-width:80px;
-height:4px;
-border-radius:10px;
-background:#fff;
-opacity:.6;
-z-index:3;
+.btn{
+height:60px;
+border:none;
+border-radius:18px;
+font-size:15px;
+font-weight:800;
+cursor:pointer;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+transition:.25s ease;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.10);
+backdrop-filter:blur(12px);
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.02);
+background:rgba(255,255,255,0.12);
+}
+
+.btn.primary{
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+box-shadow:0 0 20px rgba(0,255,255,0.35);
+}
+
+.footer{
+margin-top:22px;
+text-align:center;
+font-size:12px;
+color:var(--muted);
+line-height:1.7;
+}
+
+.footer a{
+color:#00ffee;
+text-decoration:none;
+font-weight:700;
 }
 </style>
 </head>
 
 <body>
 
-<div class="phone">
-
-<!-- SMALL STATUS TABLE -->
-<div class="topbar">
-<div class="status-box">
-<span>● XOS</span>
-<span>● LIVE</span>
-<span>● OK</span>
-</div>
-</div>
+<div class="card">
 
 <div class="logo">
-<div class="logo-box">
 <i class="fas fa-robot"></i>
 </div>
+
 <h1>LUCVOICE-XMD</h1>
-<p>Premium Connection UI</p>
-</div>
+<div class="sub">Premium Connection UI</div>
 
-<div class="apps">
+<div class="label">Select Login Method</div>
 
-<div class="app" onclick="window.location.href='/qr'">
-<div class="icon"><i class="fas fa-qrcode"></i></div>
-<h3>QR Code</h3>
-<p>Scan & Connect</p>
-</div>
+<div class="buttons">
 
-<div class="app" onclick="window.location.href='/pair'">
-<div class="icon"><i class="fas fa-link"></i></div>
-<h3>Pairing</h3>
-<p>Fast Login</p>
-</div>
+<button class="btn primary" onclick="window.location.href='/qr'">
+<i class="fas fa-qrcode"></i> Connect with QR
+</button>
+
+<button class="btn" onclick="window.location.href='/pair'">
+<i class="fas fa-mobile-alt"></i> Use Pairing Code
+</button>
 
 </div>
 
 <div class="footer">
-LUCVOICE-XMD © 2026
+Powered by <a href="#">LUCVOICE-XMD</a><br>
+Support: @2026
 </div>
-
-<div class="line"></div>
 
 </div>
 
