@@ -18,6 +18,6 @@ _____
 
 ## 👑 Owner Contact
 
-[![Contact Owner](https://img.shields.io/badge/CONTACT-OWNER-ff0000?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/255XXXXXXXXX)
+[![Contact Owner](https://img.shields.io/badge/CONTACT-OWNER-ff0000?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/255768619068)
 
   
